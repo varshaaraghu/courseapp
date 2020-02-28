@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td colspan="2" align="center">
-                <button type="submit" class="btn btn-danger">Login</button>
+                <button (click)="logUser()" class="btn btn-danger">Login</button>
             </td>
         </tr>
         <tr>
@@ -18,7 +18,9 @@
                 <a href="/register"> Not Registered yet?Click here </a>
             </td>
         </tr>
+        
     </table>
+</div>
     <div *ngIf="logStatus">
         <h1>UsersPage</h1>
         <hr>

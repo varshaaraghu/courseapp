@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
 import { course } from 'src/app/model/couser';
 import { PubSub } from 'pubsub-js';
+import { LogstatusService } from 'src/app/services/logstatus.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { PubSub } from 'pubsub-js';
 export class HomeComponent implements OnInit {
   type:string="All";
   courses:course[];
-  constructor(private cs:CoursesService) {
+  constructor(private cs:CoursesService,private ls:LogstatusService) {
     PubSub.subscribe("type-event",(event,data)=>{
       this.type=data;
     })
@@ -21,7 +22,9 @@ export class HomeComponent implements OnInit {
     this.cs.getCourses().subscribe(
       (data:course[])=>this.courses=data ,
         ()=>this.courses=[])
-    
+
+       
+        }
   }
 
-}
+
